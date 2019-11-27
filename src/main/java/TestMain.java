@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 使用封装好的工具类
  * 测试方法
  * 输入需要测试的个数
  * 例如输入10000
@@ -16,7 +17,8 @@ import java.util.List;
  * Created by lz on 2016/7/24.
  */
 public class TestMain {
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+//    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final JsonMapper OBJECT_MAPPER = new JsonMapper();
 
     /**
      * 传入数据的个数
@@ -79,7 +81,8 @@ public class TestMain {
             long start,end;
             String str = null;
             start = System.currentTimeMillis();
-            str = OBJECT_MAPPER.writeValueAsString(jsonObject);
+            str = OBJECT_MAPPER.toJson(jsonObject);
+//            str = OBJECT_MAPPER.writeValueAsString(jsonObject);
             end = System.currentTimeMillis();
             jacksonTime1 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
@@ -87,7 +90,8 @@ public class TestMain {
             end = System.currentTimeMillis();
             fastjsonTime1 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
-            OBJECT_MAPPER.readValue(str, JsonObject.class);
+            OBJECT_MAPPER.fromJson(str, JsonObject.class);
+//            OBJECT_MAPPER.readValue(str, JsonObject.class);
             end = System.currentTimeMillis();
             jacksonTime2 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
@@ -107,13 +111,16 @@ public class TestMain {
         List<Double> list10 = complete(10);
         List<Double> list1000 = complete(1000);
         List<Double> list100000 = complete(100000);
+//        List<Double> list1000000 = complete(1000000);
         System.out.println("------------------------序列化时间比较----------------------------");
         System.out.println("测试数据为10的时候:jackson序列化时间:"+list10.get(0)+"ms | fastjson序列化时间"+list10.get(1)+"ms");
         System.out.println("测试数据为1000的时候:jackson序列化时间:"+list1000.get(0)+"ms | fastjson序列化时间"+list1000.get(1)+"ms");
         System.out.println("测试数据为100000的时候:jackson序列化时间:"+list100000.get(0)+"ms | fastjson序列化时间"+list100000.get(1)+"ms");
+//        System.out.println("测试数据为1000000的时候:jackson序列化时间:"+list1000000.get(0)+"ms | fastjson序列化时间"+list1000000.get(1)+"ms");
         System.out.println("------------------------反序列化时间比较----------------------------");
         System.out.println("测试数据为10的时候:jackson反序列化时间:"+list10.get(2)+"ms | fastjson反序列化时间"+list10.get(3)+"ms");
         System.out.println("测试数据为1000的时候:jackson反序列化时间:"+list1000.get(2)+"ms | fastjson反序列化时间"+list1000.get(3)+"ms");
         System.out.println("测试数据为100000的时候:jackson反序列化时间:"+list100000.get(2)+"ms | fastjson反序列化时间"+list100000.get(3)+"ms");
+//        System.out.println("测试数据为1000000的时候:jackson反序列化时间:"+list1000000.get(2)+"ms | fastjson反序列化时间"+list1000000.get(3)+"ms");
     }
 }

@@ -6,11 +6,11 @@ import java.util.Random;
 
 /**
  * 样本对象
+ *
  */
-public class JsonObject implements Serializable {
+public class JsonObject1 implements Serializable {
+    private static final long serialVersionUID = -1520171788566678009L;
 
-
-    private static final long serialVersionUID = -5082136163712506739L;
     private Boolean fieldBoolean;
     private Integer fieldInt;
     private Long fieldLong;
@@ -18,12 +18,12 @@ public class JsonObject implements Serializable {
     private Date fieldDate;
     private String fieldStr;
     private List<String> fieldList;
-    private Map<String, Object> fieldMap;
+//    private Map<String, Object> fieldMap;
 
     /**
      * 随机样本
      */
-    public JsonObject() {
+    public JsonObject1() {
         Random random = new Random();
 
         fieldBoolean = random.nextBoolean();
@@ -35,16 +35,15 @@ public class JsonObject implements Serializable {
 
         fieldList = DataBuilder.randomStringList();
 
-        fieldMap = DataBuilder.randomMap();
+//        fieldMap = DataBuilder.randomMap();
     }
 
     /**
      * 指定List元素数量和Map元素数量的样本
-     *
-     * @param listSize  List元素数量
+     * @param listSize List元素数量
      * @param mapKeyNum Map元素数量
      */
-    public JsonObject(int listSize, int mapKeyNum) {
+    public JsonObject1(int listSize, int mapKeyNum) {
         Random random = new Random();
 
         fieldBoolean = random.nextBoolean();
@@ -56,7 +55,7 @@ public class JsonObject implements Serializable {
 
         fieldList = DataBuilder.randomStringList(listSize);
 
-        fieldMap = DataBuilder.randomMap(mapKeyNum);
+//        fieldMap = DataBuilder.randomMap(mapKeyNum);
     }
 
     public Boolean getFieldBoolean() {
@@ -115,25 +114,12 @@ public class JsonObject implements Serializable {
         this.fieldList = fieldList;
     }
 
-    public Map<String, Object> getFieldMap() {
-        return fieldMap;
-    }
+//    public Map<String, Object> getFieldMap() {
+//        return fieldMap;
+//    }
+//
+//    public void setFieldMap(Map<String, Object> fieldMap) {
+//        this.fieldMap = fieldMap;
+//    }
 
-    public void setFieldMap(Map<String, Object> fieldMap) {
-        this.fieldMap = fieldMap;
-    }
-
-    @Override
-    public String toString() {
-        return "JsonObject{" +
-                "fieldBoolean=" + fieldBoolean +
-                ", fieldInt=" + fieldInt +
-                ", fieldLong=" + fieldLong +
-                ", fieldDouble=" + fieldDouble +
-                ", fieldDate=" + fieldDate +
-                ", fieldStr='" + fieldStr + '\'' +
-                ", fieldList=" + fieldList +
-                ", fieldMap=" + fieldMap +
-                '}';
-    }
 }

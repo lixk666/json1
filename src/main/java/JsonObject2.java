@@ -6,58 +6,40 @@ import java.util.Random;
 
 /**
  * 样本对象
+ *
  */
-public class JsonObject implements Serializable {
+public class JsonObject2 implements Serializable {
+    private static final long serialVersionUID = -1520171788566678009L;
 
-
-    private static final long serialVersionUID = -5082136163712506739L;
     private Boolean fieldBoolean;
     private Integer fieldInt;
     private Long fieldLong;
     private Double fieldDouble;
-    private Date fieldDate;
+    private Long fieldDate;
     private String fieldStr;
     private List<String> fieldList;
-    private Map<String, Object> fieldMap;
+    private Map<String, Object> FIELDMAP;
+//    private Map<String, Object> fieldMap;
+
 
     /**
      * 随机样本
      */
-    public JsonObject() {
+    public JsonObject2() {
         Random random = new Random();
 
         fieldBoolean = random.nextBoolean();
         fieldInt = random.nextInt();
         fieldLong = random.nextLong();
         fieldDouble = random.nextDouble();
-        fieldDate = new Date();
+        fieldDate = System.currentTimeMillis();
         fieldStr = DataBuilder.randomString();
 
         fieldList = DataBuilder.randomStringList();
 
-        fieldMap = DataBuilder.randomMap();
+        FIELDMAP = DataBuilder.randomMap();
     }
 
-    /**
-     * 指定List元素数量和Map元素数量的样本
-     *
-     * @param listSize  List元素数量
-     * @param mapKeyNum Map元素数量
-     */
-    public JsonObject(int listSize, int mapKeyNum) {
-        Random random = new Random();
-
-        fieldBoolean = random.nextBoolean();
-        fieldInt = random.nextInt();
-        fieldLong = random.nextLong();
-        fieldDouble = random.nextDouble();
-        fieldDate = new Date();
-        fieldStr = DataBuilder.randomString();
-
-        fieldList = DataBuilder.randomStringList(listSize);
-
-        fieldMap = DataBuilder.randomMap(mapKeyNum);
-    }
 
     public Boolean getFieldBoolean() {
         return fieldBoolean;
@@ -91,13 +73,7 @@ public class JsonObject implements Serializable {
         this.fieldDouble = fieldDouble;
     }
 
-    public Date getFieldDate() {
-        return fieldDate;
-    }
 
-    public void setFieldDate(Date fieldDate) {
-        this.fieldDate = fieldDate;
-    }
 
     public String getFieldStr() {
         return fieldStr;
@@ -114,13 +90,12 @@ public class JsonObject implements Serializable {
     public void setFieldList(List<String> fieldList) {
         this.fieldList = fieldList;
     }
-
-    public Map<String, Object> getFieldMap() {
-        return fieldMap;
+    public Map<String, Object> getFIELDMAP() {
+        return FIELDMAP;
     }
 
-    public void setFieldMap(Map<String, Object> fieldMap) {
-        this.fieldMap = fieldMap;
+    public void setFIELDMAP(Map<String, Object> FIELDMAP) {
+        this.FIELDMAP = FIELDMAP;
     }
 
     @Override
@@ -133,7 +108,7 @@ public class JsonObject implements Serializable {
                 ", fieldDate=" + fieldDate +
                 ", fieldStr='" + fieldStr + '\'' +
                 ", fieldList=" + fieldList +
-                ", fieldMap=" + fieldMap +
+                ", FIELDMAP=" + FIELDMAP +
                 '}';
     }
 }
