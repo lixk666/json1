@@ -1,5 +1,7 @@
+package domain;
+
+import cn.JsonObject;
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 使用封装好的工具类
+ * 不使用工具类
  * 测试方法
  * 输入需要测试的个数
  * 例如输入10000
@@ -16,9 +18,10 @@ import java.util.List;
  * 这里我们需要测试10个数据 1000个数据 10万个数据
  * Created by lz on 2016/7/24.
  */
-public class TestMain {
-//    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    private static final JsonMapper OBJECT_MAPPER = new JsonMapper();
+public class TestMain1 {
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+//    private static final JsonMapper OBJECT_MAPPER = new JsonMapper();
 
     /**
      * 传入数据的个数
@@ -76,13 +79,13 @@ public class TestMain {
         Double jacksonTime2 = 0.00;
         Double fastjsonTime2 = 0.00;
         for (int i = 0; i < nums; i++) {
-             //这里我们生成jsonObject
-            JsonObject  jsonObject = new JsonObject();
+            //这里我们生成jsonObject
+            JsonObject jsonObject = new JsonObject();
             long start,end;
             String str = null;
             start = System.currentTimeMillis();
-            str = OBJECT_MAPPER.toJson(jsonObject);
-//            str = OBJECT_MAPPER.writeValueAsString(jsonObject);
+//            str = OBJECT_MAPPER.toJson(jsonObject);
+            str = OBJECT_MAPPER.writeValueAsString(jsonObject);
             end = System.currentTimeMillis();
             jacksonTime1 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
@@ -90,12 +93,12 @@ public class TestMain {
             end = System.currentTimeMillis();
             fastjsonTime1 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
-            OBJECT_MAPPER.fromJson(str, JsonObject.class);
-//            OBJECT_MAPPER.readValue(str, JsonObject.class);
+//            OBJECT_MAPPER.fromJson(str, JsonObject.class);
+            OBJECT_MAPPER.readValue(str, JsonObject.class);
             end = System.currentTimeMillis();
             jacksonTime2 += Double.valueOf(end-start);
             start = System.currentTimeMillis();
-            JSON.parseObject(str,JsonObject.class);
+            JSON.parseObject(str, JsonObject.class);
             end = System.currentTimeMillis();
             fastjsonTime2 += Double.valueOf(end-start);
         }

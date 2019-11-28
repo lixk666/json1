@@ -1,13 +1,8 @@
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Test;
+package domain;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import cn.JsonObject;
+import com.alibaba.fastjson.JSON;
+import common.JsonMapper;
 
 public class TestJackson {
 //    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
